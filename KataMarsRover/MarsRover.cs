@@ -55,10 +55,18 @@ namespace KataMarsRover
 
 		private void Move()
         {
-            if(Orientation == "N")
-                Y = (Y + 1) % 10;
-            else
-                X = (X + 1) % 10;
+            switch (Orientation)
+            {
+                case "S":
+                    Y = (Y - 1) % 10;
+                    break;
+                case "N":
+                    Y = (Y + 1) % 10;
+                    break;
+                case "E":
+                    X = (X + 1) % 10;
+                    break;
+            }
         }
 
 		private enum Compass { N, E, S, W} ;
