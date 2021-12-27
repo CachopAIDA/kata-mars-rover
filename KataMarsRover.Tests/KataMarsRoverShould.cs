@@ -6,21 +6,21 @@ namespace KataMarsRover.Tests
 	using System.Collections.Generic;
 	using System.Text;
 
-	public class KataMarsRoverShould
-	{
-		[Fact]
-		public void Initially_be_at_0_0_facing_N()
-		{
-			var marsRover = new MarsRover();
+    public class KataMarsRoverShould
+    {
+        [Fact]
+        public void Initially_be_at_0_0_facing_N()
+        {
+            var marsRover = new MarsRover();
 
-			var actualOrientation = marsRover.Orientation;
-			var actualX = marsRover.X;
-			var actualY = marsRover.Y;
+            var actualOrientation = marsRover.Orientation;
+            var actualX = marsRover.X;
+            var actualY = marsRover.Y;
 
-			Assert.Equal("N", actualOrientation);
-			Assert.Equal(0, actualX);
-			Assert.Equal(0, actualY);
-		}
+            Assert.Equal("N", actualOrientation);
+            Assert.Equal(0, actualX);
+            Assert.Equal(0, actualY);
+        }
 
         [Fact]
         public void after_input_M_is_at_0_1_facing_N()
@@ -52,6 +52,32 @@ namespace KataMarsRover.Tests
             Assert.Equal("N", actualOrientation);
             Assert.Equal(0, actualX);
             Assert.Equal(3, actualY);
+        }
+
+        [Fact]
+        public void after_input_MMMM_is_at_0_4_facing_N()
+        {
+            var marsRover = new MarsRover();
+
+            marsRover.Execute("MMMM");
+
+            var actualOrientation = marsRover.Orientation;
+            var actualX = marsRover.X;
+            var actualY = marsRover.Y;
+
+            Assert.Equal("N", actualOrientation);
+            Assert.Equal(0, actualX);
+            Assert.Equal(4, actualY);
+        }
+
+        [Fact]
+        public void after_input_M_the_result_is_01N()
+        {
+            var marsRover = new MarsRover();
+
+            var result = marsRover.Execute("M");
+
+            Assert.Equal("0:1:N", result);
         }
     }
 }

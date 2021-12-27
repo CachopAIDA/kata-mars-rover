@@ -22,7 +22,7 @@ namespace KataMarsRover
                 if (step == 'M') 
 				    Y = Y + 1;
             }
-            return null;
+            return $"{X}:{Y}:{Orientation}";
         }
 	}
 }

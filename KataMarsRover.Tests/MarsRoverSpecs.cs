@@ -8,10 +8,10 @@ namespace KataMarsRover.Tests
 	public class MarsRoverSpecs
 	{
 		[Fact]
-		public void Given_MMMM_gets_4_0_N()
+		public void Given_MMMM_gets_0_4_N()
 		{
 			const string inputCommand = "MMMM";
-			const string expectedOutput = "4:0:N";
+			const string expectedOutput = "0:4:N";
 			IMarsRover marsRover = new MarsRover();
 
 			var actualOutput = marsRover.Execute(inputCommand);
