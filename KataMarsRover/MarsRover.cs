@@ -10,10 +10,10 @@ namespace KataMarsRover
 	}
 
 	public class MarsRover : IMarsRover
-	{
-		public string Orientation { get; set; }
-		public int X { get; set; }
-		public int Y { get; set; }
+    {
+        public string Orientation { get; set; } = "N";
+        public int X { get; set; } = 0;
+        public int Y { get; set; } = 0;
 
 		public string Execute(string command)
 		{
