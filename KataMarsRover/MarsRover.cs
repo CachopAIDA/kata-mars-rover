@@ -17,8 +17,11 @@ namespace KataMarsRover
 
 		public string Execute(string command)
 		{
-			if (command == "M") 
-				Y = Y + 1;
+            foreach (char step in command)
+            {
+                if (step == 'M') 
+				    Y = Y + 1;
+            }
             return null;
         }
 	}
