@@ -2,63 +2,63 @@
 
 namespace KataMarsRover
 {
-	using System;
+    using System;
 
-	public interface IMarsRover
-	{
-		string Execute(string command);
-	}
-
-	public class MarsRover : IMarsRover
+    public interface IMarsRover
     {
-	    public int X { get; set; } = 0;
+        string Execute(string command);
+    }
 
-	    public int Y { get; set; } = 0;
+    public class MarsRover : IMarsRover
+    {
+        public int X { get; set; } = 0;
 
-	    public string Orientation
-	    {
-		    get => compass.ToString();
-		    set => compass = (Compass)Enum.Parse(typeof(Compass), value);
-	    }
+        public int Y { get; set; } = 0;
 
-	    private Compass compass = Compass.N;
+        public string Orientation
+        {
+            get => compass.ToString();
+            set => compass = (Compass)Enum.Parse(typeof(Compass), value);
+        }
 
-		public string Execute(string command)
-		{
+        private Compass compass = Compass.N;
+
+        public string Execute(string command)
+        {
             foreach (char step in command)
             {
-                if (step == 'M') 
-				    Move();
+                if (step == 'M')
+                    Move();
                 if (step == 'R')
                     RotateRight();
                 if (step == 'L')
-	                RotateLeft();
+                    RotateLeft();
             }
             return $"{X}:{Y}:{Orientation}";
         }
 
         private void RotateRight()
         {
-	        if (compass == Compass.W)
-		        compass = Compass.N;
-			else
-				compass += 1;
+            if (compass == Compass.W)
+                compass = Compass.N;
+            else
+                compass += 1;
         }
 
         private void RotateLeft()
         {
-	        if (compass == Compass.N)
-		        compass = Compass.W;
-			else
-				compass -= 1;
+            if (compass == Compass.N)
+                compass = Compass.W;
+            else
+                compass -= 1;
         }
 
-		private void Move()
+        private void Move()
         {
             switch (Orientation)
             {
                 case "S":
-                    Y = (Y - 1) % 10;
+                    Y = (Y == 0) ? 9 : Y - 1;
                     break;
                 case "N":
                     Y = (Y + 1) % 10;
@@ -67,11 +67,11 @@ namespace KataMarsRover
                     X = (X + 1) % 10;
                     break;
                 case "W":
-                    X = (X == 0)? 9 : X-1;
+                    X = (X == 0) ? 9 : X - 1;
                     break;
             }
         }
 
-		private enum Compass { N, E, S, W} ;
+        private enum Compass { N, E, S, W };
     }
 }

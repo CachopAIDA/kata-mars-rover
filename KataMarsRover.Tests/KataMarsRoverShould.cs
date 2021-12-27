@@ -100,5 +100,21 @@ namespace KataMarsRover.Tests
 
             Assert.Equal("9:0:W", result);
         }
+
+
+        [Fact]
+        public void Get_0_9_S_after_move_starting_from_0_0_facing_S()
+        {
+            var marsRover = new MarsRover()
+            {
+                Orientation = "S",
+                X = 0,
+                Y = 0
+            };
+
+            var result = marsRover.Execute("M");
+
+            Assert.Equal("0:9:S", result);
+        }
     }
 }
