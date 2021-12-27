@@ -31,6 +31,8 @@ namespace KataMarsRover
 				    Move();
                 if (step == 'R')
                     RotateRight();
+                if (step == 'L')
+	                RotateLeft();
             }
             return $"{X}:{Y}:{Orientation}";
         }
@@ -40,7 +42,15 @@ namespace KataMarsRover
 	        compass += 1;
         }
 
-        private void Move()
+        private void RotateLeft()
+        {
+	        if (compass == Compass.N)
+		        compass = Compass.W;
+			else
+				compass -= 1;
+        }
+
+		private void Move()
         {
             if(Orientation == "N")
                 Y = (Y + 1) % 10;
