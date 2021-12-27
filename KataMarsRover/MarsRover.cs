@@ -67,7 +67,7 @@ namespace KataMarsRover
                     X = (X + 1) % 10;
                     break;
                 case "W":
-                    X = (X - 1) % 10;
+                    X = (X == 0)? 9 : X-1;
                     break;
             }
         }
