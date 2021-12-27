@@ -30,5 +30,17 @@ namespace KataMarsRover.Tests
 
             Assert.Equal(expectedOutput, actualOutput);
         }
-	}
+
+        [Fact]
+        public void Given_MMRMMLM_gets_2_3_N()
+        {
+            const string inputCommand = "MMRMMLM";
+            const string expectedOutput = "2:3:N";
+            IMarsRover marsRover = new MarsRover();
+
+            var actualOutput = marsRover.Execute(inputCommand);
+
+            Assert.Equal(expectedOutput, actualOutput);
+        }
+    }
 }

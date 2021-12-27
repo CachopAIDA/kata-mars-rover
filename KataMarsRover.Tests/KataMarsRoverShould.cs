@@ -94,5 +94,22 @@ namespace KataMarsRover.Tests
 
             Assert.Equal("0:0:N", result);
         }
+
+        [Fact]
+        public void after_input_R_is_at_0_0_facing_E()
+        {
+            var marsRover = new MarsRover();
+
+            marsRover.Execute("R");
+
+            var actualOrientation = marsRover.Orientation;
+            var actualX = marsRover.X;
+            var actualY = marsRover.Y;
+
+            Assert.Equal("E", actualOrientation);
+            Assert.Equal(0, actualX);
+            Assert.Equal(0, actualY);
+        }
+
     }
 }
