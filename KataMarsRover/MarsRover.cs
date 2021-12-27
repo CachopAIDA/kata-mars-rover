@@ -21,6 +21,8 @@ namespace KataMarsRover
             {
                 if (step == 'M') 
 				    Y = (Y + 1) % 10;
+                if (step == 'R')
+                    Orientation = "E";
             }
             return $"{X}:{Y}:{Orientation}";
         }
