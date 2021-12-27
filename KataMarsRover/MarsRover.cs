@@ -17,7 +17,9 @@ namespace KataMarsRover
 
 		public string Execute(string command)
 		{
-			throw new NotImplementedException();
-		}
+			if (command == "M") 
+				Y = Y + 1;
+            return null;
+        }
 	}
 }
