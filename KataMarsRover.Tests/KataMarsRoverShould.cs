@@ -8,6 +8,28 @@ namespace KataMarsRover.Tests
 
     public class KataMarsRoverShould
     {
+        [Theory]
+        [InlineData("M", "N", 0, 1)]
+        [InlineData("MMM", "N", 0, 3)]
+        [InlineData("MMMM", "N", 0, 4)]
+        [InlineData("R", "E", 0, 0)]
+        [InlineData("RM", "E", 1, 0)]
+        [InlineData("RR", "S", 0, 0)]
+        public void move_to_position_with_orientation_after_execute_the_command(string input, string orientation, int x, int y)
+        {
+            var marsRover = new MarsRover();
+
+            marsRover.Execute(input);
+            
+            var actualOrientation = marsRover.Orientation;
+            var actualX = marsRover.X;
+            var actualY = marsRover.Y;
+
+            Assert.Equal(orientation, actualOrientation);
+            Assert.Equal(x, actualX);
+            Assert.Equal(y, actualY);
+        }
+
         [Fact]
         public void Initially_be_at_0_0_facing_N()
         {
@@ -20,54 +42,6 @@ namespace KataMarsRover.Tests
             Assert.Equal("N", actualOrientation);
             Assert.Equal(0, actualX);
             Assert.Equal(0, actualY);
-        }
-
-        [Fact]
-        public void after_input_M_is_at_0_1_facing_N()
-        {
-            var marsRover = new MarsRover();
-
-            marsRover.Execute("M");
-
-            var actualOrientation = marsRover.Orientation;
-            var actualX = marsRover.X;
-            var actualY = marsRover.Y;
-
-            Assert.Equal("N", actualOrientation);
-            Assert.Equal(0, actualX);
-            Assert.Equal(1, actualY);
-        }
-
-        [Fact]
-        public void after_input_MMM_is_at_0_3_facing_N()
-        {
-            var marsRover = new MarsRover();
-
-            marsRover.Execute("MMM");
-
-            var actualOrientation = marsRover.Orientation;
-            var actualX = marsRover.X;
-            var actualY = marsRover.Y;
-
-            Assert.Equal("N", actualOrientation);
-            Assert.Equal(0, actualX);
-            Assert.Equal(3, actualY);
-        }
-
-        [Fact]
-        public void after_input_MMMM_is_at_0_4_facing_N()
-        {
-            var marsRover = new MarsRover();
-
-            marsRover.Execute("MMMM");
-
-            var actualOrientation = marsRover.Orientation;
-            var actualX = marsRover.X;
-            var actualY = marsRover.Y;
-
-            Assert.Equal("N", actualOrientation);
-            Assert.Equal(0, actualX);
-            Assert.Equal(4, actualY);
         }
 
         [Fact]
@@ -94,22 +68,5 @@ namespace KataMarsRover.Tests
 
             Assert.Equal("0:0:N", result);
         }
-
-        [Fact]
-        public void after_input_R_is_at_0_0_facing_E()
-        {
-            var marsRover = new MarsRover();
-
-            marsRover.Execute("R");
-
-            var actualOrientation = marsRover.Orientation;
-            var actualX = marsRover.X;
-            var actualY = marsRover.Y;
-
-            Assert.Equal("E", actualOrientation);
-            Assert.Equal(0, actualX);
-            Assert.Equal(0, actualY);
-        }
-
     }
 }

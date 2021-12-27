@@ -20,11 +20,27 @@ namespace KataMarsRover
             foreach (char step in command)
             {
                 if (step == 'M') 
-				    Y = (Y + 1) % 10;
+				    Move();
                 if (step == 'R')
-                    Orientation = "E";
+                    RotateRight();
             }
             return $"{X}:{Y}:{Orientation}";
         }
-	}
+
+        private void RotateRight()
+        {
+            if(Orientation == "N")
+                Orientation = "E";
+            else if (Orientation == "E")
+                Orientation = "S";
+        }
+
+        private void Move()
+        {
+            if(Orientation == "N")
+                Y = (Y + 1) % 10;
+            else
+                X = (X + 1) % 10;
+        }
+    }
 }
