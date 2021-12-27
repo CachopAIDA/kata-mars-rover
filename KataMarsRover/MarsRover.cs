@@ -11,9 +11,17 @@ namespace KataMarsRover
 
 	public class MarsRover : IMarsRover
     {
-        public string Orientation { get; set; } = "N";
-        public int X { get; set; } = 0;
-        public int Y { get; set; } = 0;
+	    public int X { get; set; } = 0;
+
+	    public int Y { get; set; } = 0;
+
+	    public string Orientation
+	    {
+		    get => compass.ToString();
+		    set => compass = (Compass)Enum.Parse(typeof(Compass), value);
+	    }
+
+	    private Compass compass = Compass.N;
 
 		public string Execute(string command)
 		{
@@ -29,10 +37,7 @@ namespace KataMarsRover
 
         private void RotateRight()
         {
-            if(Orientation == "N")
-                Orientation = "E";
-            else if (Orientation == "E")
-                Orientation = "S";
+	        compass += 1;
         }
 
         private void Move()
@@ -42,5 +47,7 @@ namespace KataMarsRover
             else
                 X = (X + 1) % 10;
         }
+
+		private enum Compass { N, E, S, W} ;
     }
 }
