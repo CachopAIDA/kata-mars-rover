@@ -16,6 +16,7 @@ namespace KataMarsRover.Tests
         [InlineData("RM", "E", 1, 0)]
         [InlineData("RR", "S", 0, 0)]
         [InlineData("L", "W", 0, 0)]
+        [InlineData("RRRR", "N", 0, 0)]
         public void move_to_position_with_orientation_after_execute_the_command(string input, string orientation, int x, int y)
         {
             var marsRover = new MarsRover();

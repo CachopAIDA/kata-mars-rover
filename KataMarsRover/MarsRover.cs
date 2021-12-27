@@ -39,7 +39,10 @@ namespace KataMarsRover
 
         private void RotateRight()
         {
-	        compass += 1;
+	        if (compass == Compass.W)
+		        compass = Compass.N;
+			else
+				compass += 1;
         }
 
         private void RotateLeft()
