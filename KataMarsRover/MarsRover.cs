@@ -20,7 +20,7 @@ namespace KataMarsRover
             foreach (char step in command)
             {
                 if (step == 'M') 
-				    Y = Y + 1;
+				    Y = (Y + 1) % 10;
             }
             return $"{X}:{Y}:{Orientation}";
         }
